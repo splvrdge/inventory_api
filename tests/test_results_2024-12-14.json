@@ -1,0 +1,102 @@
+{
+  "timestamp": "2024-12-14T21:49:47+08:00",
+  "testResults": [
+    {
+      "name": "Register User",
+      "endpoint": "POST /auth/register",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "response": {
+        "success": true,
+        "message": "User registered successfully",
+        "user": {
+          "id": "675d8cbfb66fc38122e220fc",
+          "email": "test3@example.com"
+        }
+      }
+    },
+    {
+      "name": "Create Supplier",
+      "endpoint": "POST /supplier",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "response": {
+        "success": true,
+        "message": "Supplier created successfully",
+        "data": {
+          "name": "Test Supplier",
+          "contact": "123-456-7890",
+          "email": "supplier@test.com",
+          "address": "123 Test St",
+          "items": [],
+          "_id": "675d8cccb66fc38122e220fe",
+          "createdAt": "2024-12-14T13:49:00.514Z",
+          "updatedAt": "2024-12-14T13:49:00.514Z"
+        }
+      }
+    },
+    {
+      "name": "Create Item",
+      "endpoint": "POST /inventory",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "response": {
+        "success": true,
+        "message": "Item created successfully",
+        "data": {
+          "name": "Test Item",
+          "description": "Test Description",
+          "quantity": 10,
+          "price": 99.99,
+          "supplier": {
+            "_id": "675d8cccb66fc38122e220fe",
+            "name": "Test Supplier",
+            "contact": "123-456-7890"
+          },
+          "category": "Test Category",
+          "createdBy": "675d8cbfb66fc38122e220fc",
+          "_id": "675d8cd5b66fc38122e22100",
+          "createdAt": "2024-12-14T13:49:09.459Z",
+          "updatedAt": "2024-12-14T13:49:09.459Z"
+        }
+      }
+    },
+    {
+      "name": "Get All Items",
+      "endpoint": "GET /inventory",
+      "status": "SUCCESS",
+      "statusCode": 200,
+      "response": {
+        "success": true,
+        "data": [
+          {
+            "_id": "675d8cd5b66fc38122e22100",
+            "name": "Test Item",
+            "description": "Test Description",
+            "quantity": 10,
+            "price": 99.99,
+            "supplier": {
+              "_id": "675d8cccb66fc38122e220fe",
+              "name": "Test Supplier",
+              "contact": "123-456-7890"
+            },
+            "category": "Test Category",
+            "createdBy": "675d8cbfb66fc38122e220fc",
+            "createdAt": "2024-12-14T13:49:09.459Z",
+            "updatedAt": "2024-12-14T13:49:09.459Z"
+          }
+        ]
+      }
+    }
+  ],
+  "summary": {
+    "total": 4,
+    "successful": 4,
+    "failed": 0,
+    "coverage": {
+      "authentication": ["register"],
+      "supplier": ["create"],
+      "inventory": ["create", "get"]
+    }
+  }
+}
